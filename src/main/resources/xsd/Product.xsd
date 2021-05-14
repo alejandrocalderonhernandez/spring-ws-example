@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://www.example.org/Product"
+  xmlns:tns="http://www.example.org/Product" elementFormDefault="qualified">
+
+    <element name="productRequest"
+    	type="tns:productRequest">
+    </element>
+    
+    <complexType name="productRequest">
+    	<sequence>
+    		<element name="action" type="int"></element>
+    		<element name="name" type="string" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="productResponse"
+    	type="tns:productResponse">
+    </element>
+    
+    <complexType name="productResponse">
+    	<sequence>
+    		<element name="productDetails"
+    			type="tns:productDetails" minOccurs="0" maxOccurs="unbounded">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="productDetails">
+    	<sequence>
+    		<element name="id" type="int"></element>
+    		<element name="name" type="string"></element>
+    		<element name="price" type="decimal"></element>
+    		<element name="available" type="boolean"></element>
+    		<element name="img" type="base64Binary"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="productFault" type="tns:productFault"></element>
+    
+    <complexType name="productFault">
+    	<sequence>
+    		<element name="errorCode" type="integer" minOccurs="0"></element>
+    		<element name="errorMessage" type="string" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+</schema>
